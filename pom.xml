@@ -12,7 +12,7 @@
 	<artifactId>musicRepository</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>musicRepository</name>
-	<description>app for music collectyion management</description>
+	<description>app for music collection management</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -40,6 +40,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
+		<dependency>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
+			<version>3.0.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
