@@ -6,20 +6,18 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.util.List;
 
 @Entity
-@Table(name = "playlists")
+@Table(name = "history")
 @EntityListeners(AuditingEntityListener.class)
-public class Playlist {
+public class History {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private String name;
+    @OneToOne
+    private Record record;
 
-    @OneToMany
-    private List<Record> records;
-
-    public Playlist() {}
+    public History() {}
 
     public int getId() {
         return id;
@@ -29,19 +27,11 @@ public class Playlist {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Record getRecord() {
+        return record;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Record> getRecords() {
-        return records;
-    }
-
-    public void setRecords(List<Record> records) {
-        this.records = records;
+    public void setRecord(Record record) {
+        this.record = record;
     }
 }

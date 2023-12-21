@@ -14,14 +14,17 @@ public class Record {
     private int id;
     private String name;
 
-    @ManyToOne
-    private Author author;
-
     private String length;
+
+    private String author;
+
+    private String genre;
 
     private String albumName;
 
     private Integer playbacks;
+
+    private String url;
 
     public Record() {}
 
@@ -39,14 +42,6 @@ public class Record {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
     }
 
     public String getLength() {
@@ -71,5 +66,29 @@ public class Record {
 
     public void setPlaybacks(Integer playbacks) {
         this.playbacks = playbacks;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

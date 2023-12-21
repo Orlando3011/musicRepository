@@ -20,5 +20,32 @@ public class RecordService {
         records.save(record);
     }
 
+    public void removeRecord(int id) {
+        if(records.findById(id).isPresent())
+            records.delete(records.findById(id).get());
+    }
 
+    public Record findRecordById(int id) {
+        if(records.findById(id).isPresent())
+            return records.findById(id).get();
+        else return null;
+    }
+
+    public void editRecord(Record record) {
+        records.save(record);
+    }
+
+    public void addRecordToRepository(Record record) {
+        record.setLength("3:00");
+        record.setPlaybacks(0);
+        records.save(record);
+    }
+
+    public void playRecord(int id) {
+        if(records.findById(id).isPresent()) {
+            Record record = records.findById(id).get();
+            record.setPlaybacks(record.getPlaybacks() + 1);
+            records.save(record);
+        }
+    }
 }

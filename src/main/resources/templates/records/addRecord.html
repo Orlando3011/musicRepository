@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <title>addRecord</title>
+</head>
+<body>
+<div th:insert="layout/header"></div>
+
+<div class="container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading">Dodaj nowy utwór</div>
+    <div class="panel-body">
+      <form class='needs-validation' th:object="${record}" method="post" action="#" novalidate>
+        <div class="col-sm-10">
+          <label for="name">Nazwa</label>
+          <input type="text" id="name" name="name" th:field="*{name}" class="form-control" placeholder="Oczy Zielone" required>
+          <div class="invalid-feedback">Pole nie powinno być puste</div>
+        </div>
+        <div class="col-sm-10">
+          <br /><label for="author">Autor</label>
+          <input type="text" id="author" name="author" th:field="*{author}" class="form-control" placeholder="Akcent" required>
+          <div class="invalid-feedback">Pole nie powinno być puste</div>
+        </div>
+        <div class="col-sm-10">
+          <br /><label for="genre">Gatunek</label>
+          <input type="text" id="genre" name="genre" th:field="*{genre}" class="form-control" placeholder="Disco Polo" required>
+          <div class="invalid-feedback">Pole nie powinno być puste</div>
+        </div>
+        <div class="col-sm-10">
+          <br /><label for="albumName">Album</label>
+          <input type="text" id="albumName" name="albumName" th:field="*{albumName}" class="form-control" placeholder="Akcent" required>
+          <div class="invalid-feedback">Pole nie powinno być puste</div>
+        </div>
+        <div class="col-sm-10">
+          <br /><label for="url">URL</label>
+          <input type="url" id="url" name="url" th:field="*{url}" class="form-control" placeholder="url">
+          <div class="invalid-feedback">Podaj porawny link URL</div>
+        </div>
+        <div class="col-sm-10">
+          <br /><button type="submit" class="btn btn-primary">Dodaj utwór</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    var forms = document.getElementsByClassName('needs-validation');
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+
+<div th:insert="layout/footer"></div>
+</body>
+</html>
