@@ -3,7 +3,7 @@ package com.pl.musicRepository.model;
 import jakarta.persistence.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.util.List;
+import java.util.Date;
 
 @Entity
 @Table(name = "history")
@@ -14,8 +14,10 @@ public class History {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @OneToOne
+    @ManyToOne
     private Record record;
+
+    private String timePlayed;
 
     public History() {}
 
@@ -33,5 +35,13 @@ public class History {
 
     public void setRecord(Record record) {
         this.record = record;
+    }
+
+    public String getTimePlayed() {
+        return timePlayed;
+    }
+
+    public void setTimePlayed(String timpePlayed) {
+        this.timePlayed = timpePlayed;
     }
 }

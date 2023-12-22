@@ -11,6 +11,8 @@ import java.util.List;
 public class RecordService {
     @Autowired
     private RecordRepository records;
+    @Autowired
+    private HistoryService historyService;
 
     public List<Record> findAllRecords() {
         return records.findAll();
@@ -41,11 +43,16 @@ public class RecordService {
         records.save(record);
     }
 
-    public void playRecord(int id) {
+    public Record playRecord(int id) {
         if(records.findById(id).isPresent()) {
             Record record = records.findById(id).get();
             record.setPlaybacks(record.getPlaybacks() + 1);
+
             records.save(record);
+            historyService.addRecordToHistory(record);
+
+            return record;
         }
+        else return null;
     }
 }

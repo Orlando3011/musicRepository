@@ -57,8 +57,7 @@ public class RecordController {
 
     @GetMapping("/records/playRecord/{id}")
     public String playRecord(Model model, @PathVariable(name = "id") int id){
-        recordService.playRecord(id);
-        model.addAttribute("recordsList", recordService.findAllRecords());
-        return "redirect:/records";
+        model.addAttribute("record", recordService.playRecord(id));
+        return "records/detailRecord";
     }
 }
