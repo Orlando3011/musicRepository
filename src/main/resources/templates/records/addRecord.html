@@ -3,7 +3,7 @@
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  <title>addRecord</title>
+  <title>Dodaj rekord</title>
 </head>
 <body>
 <div th:insert="layout/header"></div>
@@ -34,12 +34,13 @@
           <div class="invalid-feedback">Pole nie powinno być puste</div>
         </div>
         <div class="col">
-          <br /><label for="url">URL</label>
-          <input type="url" id="url" name="url" th:field="*{url}" class="form-control" placeholder="url">
-          <div class="invalid-feedback">Podaj porawny link URL</div>
+          <br /><label for="url">ID filmu</label>
+          <input type="text" id="url" name="url" th:field="*{url}" class="form-control" placeholder="bU8x2L7b7uk">
+          <div class="invalid-feedback">Pole nie powinno być puste</div>
         </div>
-        <div class="col">
-          <br /><button type="submit" class="btn btn-primary">Dodaj utwór</button>
+        <br /><div class="row">
+            <button type="submit" class="btn btn-primary btn-lg">Zapisz</button>
+            <a th:href="@{/records}" class="btn btn-secondary btn-lg" role="button">Powrót</a>
         </div>
       </form>
     </div>

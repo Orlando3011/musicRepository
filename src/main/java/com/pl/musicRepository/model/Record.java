@@ -14,8 +14,6 @@ public class Record {
     private int id;
     private String name;
 
-    private String length;
-
     private String author;
 
     private String genre;
@@ -42,14 +40,6 @@ public class Record {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLength() {
-        return length;
-    }
-
-    public void setLength(String length) {
-        this.length = length;
     }
 
     public String getAlbumName() {

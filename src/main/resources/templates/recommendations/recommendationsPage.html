@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <title>Rekomendacje</title>
+</head>
+
+<body>
+<div th:insert="layout/header"></div>
+
+<div class="container-fluid">
+  <button class="btn btn-primary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#stats" aria-expanded="false" aria-controls="collapseExample">
+    Statystyki
+  </button>
+  <div class="collapse" id="stats">
+    <div class="card card-body">
+      <p>W Twojej kolekcji znajduje się <span th:text="${Recommendations.songsCount}"></span> utworów</p>
+      <p>Najczęściej słuchanym utworem jest <span th:text="${Recommendations.favouriteSong}"></span></p>
+      <p>Najczęściej słuchanym gatunkiem jest <span th:text="${Recommendations.favouriteGenre}"></span></p>
+      <p>Najczęściej słuchanym artystą jest <span th:text="${Recommendations.favouriteAuthor}"></span></p>
+    </div>
+  </div>
+  <br/>
+  <button class="btn btn-secondary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#recs" aria-expanded="false" aria-controls="collapseExample">
+    Rekomendacje
+  </button>
+  <div class="collapse" id="recs">
+    <div class="card card-body">
+      <p></p>
+    </div>
+  </div>
+
+
+</div>
+<div th:insert="layout/footer"></div>
+</body>
+</html>

@@ -34,11 +34,11 @@ public class RecordService {
     }
 
     public void editRecord(Record record) {
+        record.setPlaybacks(0);
         records.save(record);
     }
 
     public void addRecordToRepository(Record record) {
-        record.setLength("3:00");
         record.setPlaybacks(0);
         records.save(record);
     }
@@ -46,6 +46,7 @@ public class RecordService {
     public Record playRecord(int id) {
         if(records.findById(id).isPresent()) {
             Record record = records.findById(id).get();
+            if(record.getPlaybacks() == null) record.setPlaybacks(0);
             record.setPlaybacks(record.getPlaybacks() + 1);
 
             records.save(record);
