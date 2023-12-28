@@ -14,11 +14,14 @@
     Statystyki
   </button>
   <div class="collapse" id="stats">
-    <div class="card card-body">
-      <p>W Twojej kolekcji znajduje się <span th:text="${Recommendations.songsCount}"></span> utworów</p>
-      <p>Najczęściej słuchanym utworem jest <span th:text="${Recommendations.favouriteSong}"></span></p>
-      <p>Najczęściej słuchanym gatunkiem jest <span th:text="${Recommendations.favouriteGenre}"></span></p>
-      <p>Najczęściej słuchanym artystą jest <span th:text="${Recommendations.favouriteAuthor}"></span></p>
+    <div class="card card-body" th:if="${Recommendations.songsCount == 0}">
+      <h4>Brak utworów w kolekcji!</h4>
+    </div>
+    <div class="card card-body" th:if="${Recommendations.songsCount > 0}">
+      <h4>W Twojej kolekcji znajduje się <span th:text="${Recommendations.songsCount}"></span> utworów</h4>
+      <h4 th:if="${Recommendations.favouriteSong != null}">Najczęściej słuchanym utworem jest <span th:text="${Recommendations.favouriteSong}"></span></h4>
+      <h4 th:if="${Recommendations.favouriteGenre != null}">Najczęściej słuchanym gatunkiem jest <span th:text="${Recommendations.favouriteGenre}"></span></h4>
+      <h4 th:if="${Recommendations.favouriteAuthor != null}">Najczęściej słuchanym artystą jest <span th:text="${Recommendations.favouriteAuthor}"></span></h4>
     </div>
   </div>
   <br/>
@@ -26,8 +29,40 @@
     Rekomendacje
   </button>
   <div class="collapse" id="recs">
-    <div class="card card-body">
-      <p></p>
+    <div class="card card-body" th:if="${Recommendations.songsCount == 0}">
+      <h4>Brak utworów w kolekcji!</h4>
+    </div>
+    <div class="card card-body" th:if="${Recommendations.songsCount > 0}">
+      <h4>Więcej z ulubionego gatunku</h4>
+      <div class="row">
+        <div class="card" style="width: 18rem;" th:each="record : ${Recommendations.recommendedByGenre}">
+          <img class="card-img-top" th:src="@{http://img.youtube.com/vi/{url}/0.jpg(url=${record.url})}" alt="Thumbnail">
+          <div class="card-body">
+            <h5 class="card-title"><span th:text="${record.author}"></span> : <span th:text="${record.name}"></span></h5>
+            <a th:href="@{/records/playRecord/{id}(id=${record.id})}" class="btn btn-success  btn-lg">Odtwórz</a>
+          </div>
+        </div>
+      </div>
+      <h4>Więcej od ulubionego autora</h4>
+      <div class="row">
+        <div class="card" style="width: 18rem;" th:each="record : ${Recommendations.recommendedByArtist}">
+          <img class="card-img-top" th:src="@{http://img.youtube.com/vi/{url}/0.jpg(url=${record.url})}" alt="Thumbnail">
+          <div class="card-body">
+            <h5 class="card-title"><span th:text="${record.author}"></span> : <span th:text="${record.name}"></span></h5>
+            <a th:href="@{/records/playRecord/{id}(id=${record.id})}" class="btn btn-success  btn-lg">Odtwórz</a>
+          </div>
+        </div>
+      </div>
+      <h4>Więcej losowych utworów</h4>
+      <div class="row">
+        <div class="card" style="width: 18rem;" th:each="record : ${Recommendations.recommendedByRandom}">
+          <img class="card-img-top" th:src="@{http://img.youtube.com/vi/{url}/0.jpg(url=${record.url})}" alt="Thumbnail">
+          <div class="card-body">
+            <h5 class="card-title"><span th:text="${record.author}"></span> : <span th:text="${record.name}"></span></h5>
+            <a th:href="@{/records/playRecord/{id}(id=${record.id})}" class="btn btn-success  btn-lg">Odtwórz</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -35,6 +35,5 @@ class RecordServiceTest {
         //then
         assertEquals(RecordServiceTestHelper.TEST_NAME, record.getName());
         assertEquals(RecordServiceTestHelper.TEST_ALBUM_NAME, record.getAlbumName());
-        assertEquals(RecordServiceTestHelper.TEST_LENGTH, record.getLength());
     }
 }

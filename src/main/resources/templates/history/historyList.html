@@ -23,7 +23,7 @@
     </thead>
     <tbody>
     <tr th:if="${historyList.empty}">
-      <td colspan="2"> Historia jest pusta. </td>
+      <td colspan="5"> Historia jest pusta. </td>
     </tr>
     <tr th:each="history : ${historyList}">
       <td><span th:text="${history.record.name}"> Nazwa </span></td>
